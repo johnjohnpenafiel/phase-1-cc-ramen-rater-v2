@@ -10,11 +10,19 @@ const addSubmitListener = () => {
 }
 
 const displayRamens = () => {
-  const ramenDatabase = fetch("http://localhost:3000/ramens")
-  .then(response => response.json)
-  .then(data)
-  .
+  fetch("http://localhost:3000/ramens")
+    .then(response => response.json())
+    .then(ramenData => {
+      const ramenMenu = document.getElementById('ramen-menu');
+      ramenData.forEach(ramen => {
+        const img = document.createElement('img');
+        img.src = ramen.img;
+        ramenMenu.appendChild(img);
+      });
+    })
+    .catch(error => console.log(error));
 };
+
 
 const main = () => {
   // Invoke displayRamens here
