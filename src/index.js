@@ -10,7 +10,10 @@ const addSubmitListener = () => {
 }
 
 const displayRamens = () => {
-  // Add code
+  const ramenDatabase = fetch("http://localhost:3000/ramens")
+  .then(response => response.json)
+  .then(data)
+  .
 };
 
 const main = () => {
@@ -27,3 +30,8 @@ export {
   handleClick,
   main,
 };
+
+
+
+
+//database link: http://localhost:3000/ramens
