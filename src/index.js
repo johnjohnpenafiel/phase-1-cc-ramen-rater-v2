@@ -1,4 +1,5 @@
 // index.js
+
 //database link: http://localhost:3000/ramens
 
 // Callbacks
@@ -64,17 +65,19 @@ const displayRamens = () => {
     .then(response => response.json())
     .then(ramenData => {
       const ramenMenu = document.getElementById('ramen-menu');
-      ramenData.forEach(ramen => {
+      ramenData.forEach((ramen, index) => {
         const img = document.createElement('img');
         img.src = ramen.image;
         ramenMenu.appendChild(img);
         // Add click event, make sure it's inside for each function *SCOPE*
         img.addEventListener('click', () => handleClick(ramen));
+        if (index === 0) {
+          handleClick(ramen);
+        }
       });
     })
     .catch(error => console.log(error));
 };
-
 
 const main = () => {
   displayRamens();
@@ -90,4 +93,3 @@ export {
   handleClick,
   main,
 };
-
